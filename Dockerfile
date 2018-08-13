@@ -75,6 +75,10 @@ RUN wget https://getcomposer.org/installer -O /tmp/composer-setup.php && \
     php /tmp/composer-setup.php --version=$COMPOSER_VERSION --install-dir=bin && \
     php -r "unlink('/tmp/composer-setup.php');"
 
+#Install cachet-monitor
+RUN wget https://github.com/CastawayLabs/cachet-monitor/releases/download/v3.0/cachet_monitor_linux_amd64 -O /usr/bin/cachet-monitor && \
+    chmod +x /usr/bin/cachet-monitor
+
 WORKDIR /var/www/html/
 USER 1001
 

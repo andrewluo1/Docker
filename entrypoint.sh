@@ -221,6 +221,8 @@ start_system() {
   migrate_db
   echo "Starting Cachet! ..."
   php artisan config:cache
+  php logmein/add_monitoring_info.php
+  php artisan lmi:seed
   /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
 }
 

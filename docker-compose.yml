@@ -12,8 +12,8 @@ services:
   cachet:
     build:
       context: .
-      args:
-        - cachet_ver=master
+    volumes:
+      - ./cachet/:/var/www/html/
     ports:
       - 80:8000
     links:
@@ -26,9 +26,9 @@ services:
       - DB_USERNAME=postgres
       - DB_PASSWORD=postgres
       - DB_PREFIX=chq_
-      - APP_KEY=${APP_KEY:-null}
+      - APP_KEY=base64:lg1m/12MHBbBpiWTXjot98Q9MP/nSzPrvLEU2beD+2Y=
       - APP_LOG=errorlog
-      - DEBUG=false
+      - DEBUG=true
     depends_on:
       - postgres
     restart: on-failure
